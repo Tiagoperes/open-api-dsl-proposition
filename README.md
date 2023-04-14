@@ -1,7 +1,7 @@
 # Propositions for a new DSL for Open API
 
 ## Objectives
-- It must be fast to write, i.e, it most reduce most of the code in a yaml not just replace it
+- It must be fast to write, i.e, it must reduce most of the code in a yaml not just replace it
 - It must be based on a well known programming language with validation and auto completion
 - It must be easy to learn
 - It must be restricted. The developer can't do more than the Open API allows.
