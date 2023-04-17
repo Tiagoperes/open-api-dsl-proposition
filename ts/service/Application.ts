@@ -9,7 +9,7 @@ const getById = Operation('getById')
         200: Application // simple response config, a type and a description
             .d('The operation succeeded'),
         404: Response() // complex response config
-            .content('html') // replaces the root level content (json)
+            .content('html') // replaces the root level content (json). This is a Union Type, not an open string.
             .header('error-header') // default type is String
             .example('<p style="color: red">This app doesn\'t exist</p>')
             .d('The id passed in the route doesn\'t correspond to an id in the database'),

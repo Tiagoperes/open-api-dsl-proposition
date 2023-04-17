@@ -12,8 +12,11 @@ export default API()
     .version('0.0.1')
     .servers([production, staging])
     .security(bearer)
-    .accept('json') // applies globally, can be changed locally
-    .content('json') // applies globally, can be changed locally
+    /* The 2 next functions apply globally and can be changed locally when declaring an Operation.
+    Although it might seem we can pass any string, this is not true, since these accept a TS Union Type, which
+    is similar to enums, but easier to write. Invalid values would be detected by the IDE and compiler. */
+    .accept('json')
+    .content('json')
     .routes({
         applications: ApplicationService, // "/applications"
         // examples of potential other services:
