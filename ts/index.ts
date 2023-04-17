@@ -2,10 +2,10 @@ import { API, Server, bearer } from '@stack-spot/open-api-dsl'
 import { ApplicationService } from './service/Application'
 
 const production = Server('http://api.example.com/v1')
-    `Optional server description, e.g. Main (production) server`
+    .description('Optional server description, e.g. Main (production) server')
 
 const staging = Server('http://staging-api.example.com')
-    `Optional server description, e.g. Internal staging server for testing`
+    .d('Optional server description, e.g. Internal staging server for testing') // short for .description(str)
 
 export default API()
     .title('Stack Spot')

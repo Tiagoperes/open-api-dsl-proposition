@@ -7,21 +7,21 @@ import { ApplicationVersionService } from './ApplicationVersion'
 const getById = Operation('getById')
     .responses({
         200: Application // simple response config, a type and a description
-            `The operation succeeded`,
+            .d('The operation succeeded'),
         404: Response() // complex response config
             .content('html') // replaces the root level content (json)
             .header('error-header') // default type is String
             .example('<p style="color: red">This app doesn\'t exist</p>')
-            `The id passed in the route doesn't correspond to an id in the database`,
+            .d('The id passed in the route doesn\'t correspond to an id in the database'),
     })
-    `Gets an application by its id`
+    .d('Gets an application by its id')
 
 const list = Operation('list')
     .query(PageQuery)
     .responses({
         200: Page.of(Application),
     })
-    `Lists all applications corresponding to the query`
+    .d('Lists all applications corresponding to the query')
 
 const create = Operation('create')
     .requestBody(Application)
@@ -71,7 +71,7 @@ export const ApplicationService = Service('application')
             .delete(remove)
             .route('versions', ApplicationVersionService) // "/versions", in the end, via route composition: /applications/{applicationId}/versions
     )
-    `Service to manipulate applications`
+    .d('Service to manipulate applications')
 
 /**
  * Something cool here is that many services will follow the same general contract, so instead of rewriting everything every time, we could create
@@ -102,7 +102,7 @@ export const ApplicationService = Service('application')
  *      .responses({
  *          200: List.of(Type),
  *      })
- *      `Lists all ${name}s corresponding to the query`
+ *      .d('Lists all ${name}s corresponding to the query')
  * 
  *   // other operations: getById, create, update, remove
  * 

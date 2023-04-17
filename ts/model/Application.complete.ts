@@ -25,19 +25,19 @@ export const ApplicationStatus = Enum('ApplicationStatus', {
 
 export const Application = Type('Application', {
     id: String
-        .description('the identifier of the application'),
+        .d('the identifier of the application'),
     name: String
-        `the name of the application`, // short for .description(str)
+        .d('the name of the application'),
     description: String.optional()
-        `the description of the application`,
+        .d('the description of the application'),
     stackVersionId: String
-        `the stackVersion containing the application`,
+        .d('the stackVersion containing the application'),
     studioId: String
-        `the studio containing the application`,
+        .d('the studio containing the application'),
     workspaceId: String
-        `the workspace containing the application`,
+        .d('the workspace containing the application'),
     status: ApplicationStatus
-        `the status of the application`,
+        .d('the status of the application'),
 }).example(example)
-    `An application`
+    .d('An application')
 

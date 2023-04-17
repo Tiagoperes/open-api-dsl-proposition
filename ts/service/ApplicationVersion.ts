@@ -31,4 +31,4 @@ export const ApplicationVersionService = Service('applicationVersion')
         Service()
             .get(getById),
     )
-    `Service to manipulate application versions`
+    .description('Service to manipulate application versions')
