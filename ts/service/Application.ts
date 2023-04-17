@@ -31,7 +31,6 @@ const create = Operation('create')
         422: Void,
         201: Application,
     })
-    .cache(({ manager }) => manager.invalidate(ApplicationService.all))
 
 const update = Operation('update')
     .requestBody(Application)
@@ -41,17 +40,12 @@ const update = Operation('update')
         422: Void,
         201: Application,
     })
-    .cache(({ manager, response }) => manager.invalidate(ApplicationService.getById, { id: response.body.id }))
 
 const remove = Operation('remove')
     .responses({
         200: Void,
         404: Void,
     })
-    .cache(({ manager, response }) => manager
-        .invalidate(ApplicationService.all)
-        .invalidate(ApplicationService.getById, { id: response.body.id })
-    )
 
 // A Service has every http verb as a method + "route". "route" creates a sub-route with a new Service.
 // A Service creates tags, paths and operations in the OpenAPI contract
